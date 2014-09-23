@@ -243,6 +243,10 @@ class PluginSessionResumption(PluginBase.PluginBase):
             return False, 'TLS ticket not assigned'
 
         # Try to resume that session using the TLS ticket
+        print "Trying to resume TLS tickets, waiting 10s"
+        import time
+        time.sleep(10)
+        print "going for it!"
         session2 = self._resume_ssl_session(target, session1, tlsTicket=True)
         try: # Recover the TLS ticket
             session2_tls_ticket = self._extract_tls_session_ticket(session2)
